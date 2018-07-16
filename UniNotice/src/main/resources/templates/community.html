@@ -44,54 +44,38 @@
 			<div id="mainbody">
 
 				<div class="alert alert-success" th:if="${success}">
-					<p class="text text-center"> Successful registration of a community </p>
+					<p class="text text-center">Successful registration of a
+						community</p>
 				</div>
 
 				<h2>Communities</h2>
 
-				<div th:replace="fragments :: mainButton"></div>
+				<a th:href="@{/createCommunity}" class="btn btn-success" id ="createButton"> Create a community </a>
 
-				<div class="cardContainer">
-					<div class="card" style="width: 18rem;">
-						<img th:src="@{/images/2.jpg}" alt="Card One" class="card-img-top">
-						<div class="card-body">
-							<h5 class="card-title">Accomodation</h5>
-							<p class="card-text">It is a long established fact that a
-								reader will be distracted by the readable content of a page when
-								looking at its layout.</p>
-							<div class="accept">
-								<a href="#" class="btn btn-primary">Read...</a> <a href="#"
-									class="btn btn-primary"> Join </a>
+				<div th:unless="${communities} and ${communities.size()}">
+					<p class="text text-center text-danger">No Communities have
+						been registred</p>
+				</div>
+
+				<div class="row">
+
+					<div class="cardContainer" th:each="community : ${communities}">
+						<div class="card" style="width: 18rem;">
+							<img th:src="@{/images/2.jpg}" alt="Card One"
+								class="card-img-top">
+							<div class="card-body">
+								<h5 class="card-title" th:text="${community.name}">Accomodation</h5>
+								<p class="card-text text-center"
+									th:text="${community.description}">It is a long established
+									fact that a reader will be distracted by the readable content
+									of a page when looking at its layout.</p>
+								<div class="accept">
+									<a href="#" class="btn btn-primary">Read More</a> <a href="#"
+										class="btn btn-primary"> Join </a>
+								</div>
 							</div>
 						</div>
-					</div>
 
-					<div class="card" style="width: 18rem;">
-						<img th:src="@{/images/3.jpg}" alt="Card Two" class="card-img-top">
-						<div class="card-body">
-							<h5 class="card-title">Administration</h5>
-							<p class="card-text">It is a long established fact that a
-								reader will be distracted by the readable content of a page when
-								looking at its layout.</p>
-							<div class="accept">
-								<a href="#" class="btn btn-primary">Read...</a> <a href="#"
-									class="btn btn-primary"> Join </a>
-							</div>
-						</div>
-					</div>
-
-					<div class="card" style="width: 18rem;">
-						<img th:src="@{/images/4.jpg}" alt="Card Two" class="card-img-top">
-						<div class="card-body">
-							<h5 class="card-title">Security</h5>
-							<p class="card-text">It is a long established fact that a
-								reader will be distracted by the readable content of a page when
-								looking at its layout.</p>
-							<div class="accept">
-								<a href="#" class="btn btn-primary">Read...</a> <a href="#"
-									class="btn btn-primary"> Join </a>
-							</div>
-						</div>
 					</div>
 
 				</div>
